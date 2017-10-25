@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<h1>Dashboard</h1>
+<section class="row text-center placeholders">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -13,11 +14,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

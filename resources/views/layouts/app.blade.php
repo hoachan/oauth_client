@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', '8ppy') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
@@ -43,8 +43,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">ログイン</a></li>
+                            <li><a href="{{ route('register') }}">新規登録</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -70,8 +70,26 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/user-list">リストユーザー <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user-profile">ユーザープロファイル</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/oauth-setting">Oauth設定</a>
+                        </li>
+                    </ul>
+                </nav>
+                <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
