@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Socialite;
 use App\User;
+use App\LoginFacebook;
 
 class LoginController extends Controller
 {
@@ -60,7 +61,7 @@ class LoginController extends Controller
         $fbUser = Socialite::driver('facebook')->user();
 
         $user   = $this->findOrCreateFacebookUser($fbUser);
-
+        
         auth()->login($user);
         
         return redirect('/');
@@ -69,17 +70,17 @@ class LoginController extends Controller
     
     public function findOrCreateFacebookUser($fbUser)
     {
-        $user = User::firstOrNew(['provider_id' => (string)$fbUser->id]);
+        $loginFacebook = LoginFacebook::firstOrNew(['facebook_id' => (string)$fbUser->id]);
 
-        if ($user->exists) return $user;
+        if ($loginFacebook->exists) return $user;
 
         $user->fill([
-            'name'      => $fbUser->name,
-            'email'     => $fbUser->email,
-            'avatar'     => $fbUser->avatar,
-            'provider_name'     => $fbUser->name,
-            'provider_id'     => $fbUser->id,
-            'user_info'     => json_encode($fbUser),
+            'name'                      => $fbUser->name,
+            'email'                     => $fbUser->email,
+            'avatar'                    => $fbUser->avatar,
+            'current_login_by'          => 'facebook',
+            'provider_id'               => $fbUser->id,
+//            'user_info'                 => json_encode($fbUser),
         ])->save();
         
         return $user;

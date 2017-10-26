@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoginGooglesTable extends Migration
+class CreateYahooOauthsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLoginGooglesTable extends Migration
      */
     public function up()
     {
-        Schema::create('login_googles', function (Blueprint $table) {
+        Schema::create('yahoo_oauths', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->string('google_id');
-            $table->string('token');
-            $table->jsonb('user_info')->nullable();
+            $table->string('yahoo_id');
+            $table->string('refresh_token');
+            $table->jsonb('user_info')->nullable(); 
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLoginGooglesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('login_googles');
+        Schema::dropIfExists('yahoo_oauths');
     }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -38,7 +39,13 @@
                                 @endif
                             </div>
                         </div>
-
+                        
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="/auth/facebook"><i class="fa fa-facebook-official" style="font-size:36px; color: blue;"></i></a>
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">

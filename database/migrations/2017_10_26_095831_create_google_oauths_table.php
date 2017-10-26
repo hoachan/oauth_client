@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoginFacebooksTable extends Migration
+class CreateGoogleOauthsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLoginFacebooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('login_facebooks', function (Blueprint $table) {
+        Schema::create('google_oauths', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->string('facebook_id');
-            $table->string('token');
-            $table->jsonb('user_info')->nullable();
+            $table->string('google_id');
+            $table->string('refresh_token');
+            $table->jsonb('user_info')->nullable();            
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLoginFacebooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('login_facebooks');
+        Schema::dropIfExists('google_oauths');
     }
 }

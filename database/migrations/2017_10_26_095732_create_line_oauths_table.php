@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoginTwittersTable extends Migration
+class CreateLineOauthsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLoginTwittersTable extends Migration
      */
     public function up()
     {
-        Schema::create('login_twitters', function (Blueprint $table) {
+        Schema::create('line_oauths', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->string('twitter_id');
-            $table->string('token');
-            $table->jsonb('user_info')->nullable();
+            $table->string('line_id');
+            $table->string('refresh_token');
+            $table->jsonb('user_info')->nullable();            
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLoginTwittersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('login_twitters');
+        Schema::dropIfExists('line_oauths');
     }
 }
