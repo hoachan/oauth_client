@@ -15,9 +15,10 @@ class CreateGoogleOauthsTable extends Migration
     {
         Schema::create('google_oauths', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
+            $table->integer('user_id');
+            $table->string('email');
             $table->string('google_id');
-            $table->string('refresh_token');
+            $table->string('refresh_token')->nullable();
             $table->jsonb('user_info')->nullable();            
             $table->timestamps();
         });

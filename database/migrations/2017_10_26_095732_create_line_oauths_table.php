@@ -16,8 +16,9 @@ class CreateLineOauthsTable extends Migration
         Schema::create('line_oauths', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
+            $table->string('email');
             $table->string('line_id');
-            $table->string('refresh_token');
+            $table->string('refresh_token')->nullable();
             $table->jsonb('user_info')->nullable();            
             $table->timestamps();
         });

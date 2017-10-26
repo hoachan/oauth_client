@@ -39,13 +39,7 @@
                                 @endif
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="/auth/facebook"><i class="fa fa-facebook-official" style="font-size:36px; color: blue;"></i></a>
-                            </div>
-                        </div>
-                        
+                                                
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
@@ -68,6 +62,15 @@
                             </div>
                         </div>
                     </form>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="/auth/facebook"><i class="fa fa-facebook-official" style="font-size:36px; color: blue; margin-left: 15px;"></i></a>
+                                <a href="/auth/google"><i class="fa fa-google-plus" style="font-size:36px; color: blue; margin-left: 15px;"></i></a>
+                                <a href="/auth/yahoo"><i class="fa fa-hacker-news" style="font-size:36px; color: blue; margin-left: 15px;"></i></a>
+                                <a href="/auth/line"><i style="font-size:36px; color: blue; margin-left: 15px;">Line</i></a>
+                                <a href="/auth/twitter"><i class="fa fa-twitter" style="font-size:36px; color: blue; margin-left: 15px;"></i></a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
