@@ -16,6 +16,11 @@ Route::get('/user-list', 'UserController@getUsers');
 Route::get('/user-profile', 'UserController@getUsers');
 Route::get('/oauth-setting', 'UserController@getUsers');
 
+Route::prefix('auth')->group(function () {
+    Route::get('/facebook', 'Auth\LoginController@redirectToProvider');
+    Route::get('/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
