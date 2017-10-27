@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LineOauth extends Model
+class UserLinetoken extends Model
 {
     //
 }

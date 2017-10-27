@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FacebookOauth extends Model
+class UserFbtoken extends Model
 {
     protected $fillable = [
         'facebook_id', 'user_id', 'email',
-        'user_info', 'refresh_token',
+        'token', 'refresh_token',
         
     ];
     

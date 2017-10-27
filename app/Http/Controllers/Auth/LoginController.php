@@ -7,7 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Socialite;
 use App\User;
-use App\FacebookOauth;
+use App\UserFbtoken;
+use App\FbResponse;
 
 class LoginController extends Controller
 {
@@ -71,7 +72,7 @@ class LoginController extends Controller
     public function findOrCreateFacebookUser($fbUser)
     {
         
-        $loginFacebook = FacebookOauth::firstOrNew(['facebook_id' => (string)$fbUser->id]);
+        $loginFacebook = UserFbtoken::firstOrNew(['facebook_id' => (string)$fbUser->id]);
 
         if ($loginFacebook->exists) return $loginFacebook->user;
 
@@ -83,8 +84,8 @@ class LoginController extends Controller
                     'user_id'          => (integer)$user->id,
                     'email'            => $fbUser->email,
                     'facebook_id'      => $fbUser->id,
+                    'token'     => (string)$fbUser->token,
                     'refreshtoken'     => (string)$fbUser->refreshToken,
-                    'user_info'        => json_encode($fbUser),
                 ])->save();
                 
                 return $user;
@@ -105,9 +106,13 @@ class LoginController extends Controller
             'user_id'          => (integer)$user->id,
             'email'            => $fbUser->email,
             'facebook_id'      => $fbUser->id,
-            'refreshtoken'     => (string)$fbUser->refreshToken,
-            'user_info'        => json_encode($fbUser),
         ])->save();
+        
+        $fbResponse = FbResponse::create([
+            'facebook_id'       =>  $loginFacebook->id,
+            'scope'             => 'public',
+            'response'        => json_encode($fbUser),
+        ]);
         
         return $user;
     }   

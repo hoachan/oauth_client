@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class YahooOauth extends Model
+class UserGoogletoken extends Model
 {
     //
 }

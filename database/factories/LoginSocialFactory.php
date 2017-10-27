@@ -1,10 +1,10 @@
-<?php //
+<?php
 
 use Faker\Generator as Faker;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
 
-$factory->define(App\FacebookOauth::class, function (Faker $faker) {
+$factory->define(App\UserFbtoken::class, function (Faker $faker) {
 
     $user_info = [
         $faker->name,

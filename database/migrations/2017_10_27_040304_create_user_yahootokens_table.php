@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLineOauthsTable extends Migration
+class CreateUserYahootokensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateLineOauthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('line_oauths', function (Blueprint $table) {
+        Schema::create('user_yahootokens', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
-            $table->string('email');
-            $table->string('line_id');
-            $table->string('refresh_token')->nullable();
-            $table->jsonb('user_info')->nullable();            
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreateLineOauthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('line_oauths');
+        Schema::dropIfExists('user_yahootokens');
     }
 }
